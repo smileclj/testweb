@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/jquery.min.js"></script>
+</head>
+<body>
+    <input id="ajax" type="button" value="跨域ajax请求">
+    <input id="jsonp" type="button" value="jsonp请求">
+    <script>
+        $(function(){
+            $('#ajax').click(function(){
+                $.ajax({
+                    type:'POST',
+                    url:'http://localhost:8888/test/testJson.htm',
+                    dataType:'json',
+                    success:function(msg){
+                        console.log(typeof(msg));
+                        console.log(msg);
+                    }
+                })
+            })
+
+            $('#jsonp').click(function(){
+                $.ajax({
+                    type:'POST',
+                    url:'http://localhost:8888/test/testJson.htm',
+                    dataType:'jsonp',
+                    success:function(msg){
+                        console.log(typeof(msg));
+                        console.log(JSON.parse(msg));
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+</html>
