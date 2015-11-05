@@ -9,11 +9,13 @@
     <input id="ajax" type="button" value="跨域ajax请求">
     <input id="jsonp" type="button" value="jsonp请求">
     <script>
+        //同一域下的不同端口请求也算跨域请求
         $(function(){
             $('#ajax').click(function(){
                 $.ajax({
                     type:'POST',
-                    url:'http://localhost:8888/test/testJson.htm',
+                    url:'http://127.0.0.1:8877/test/testJson.htm',
+                    data:{id:1},
                     dataType:'json',
                     success:function(msg){
                         console.log(typeof(msg));
@@ -25,11 +27,12 @@
             $('#jsonp').click(function(){
                 $.ajax({
                     type:'POST',
-                    url:'http://localhost:8888/test/testJson.htm',
+                    url:'http://127.0.0.1:8877/test/testJson.htm',
+                    data:{id:2},
                     dataType:'jsonp',
                     success:function(msg){
                         console.log(typeof(msg));
-                        console.log(JSON.parse(msg));
+                        console.log(JSON.stringify(msg));
                     }
                 })
             })
